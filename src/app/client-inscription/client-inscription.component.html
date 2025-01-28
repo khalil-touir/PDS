@@ -1,0 +1,56 @@
+<h1 style="text-align: center;">Formulaire D'incription Client</h1>
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  <!-- Champ Nom -->
+  <div>
+    <label for="nom">Nom</label>
+    <input id="nom" formControlName="nom" type="text" placeholder="Entrez votre nom">
+    <div *ngIf="clientForm.get('nom')?.invalid && clientForm.get('nom')?.touched">
+      <small *ngIf="clientForm.get('nom')?.hasError('required')">Nom est requis.</small>
+      <small *ngIf="clientForm.get('nom')?.hasError('pattern')">Nom ne peut contenir que des lettres.</small>
+    </div>
+  </div>
+
+  <!-- Champ Prénom -->
+  <div>
+    <label for="prenom">Prénom</label>
+    <input id="prenom" formControlName="prenom" type="text" placeholder="Entrez votre prénom">
+    <div *ngIf="clientForm.get('prenom')?.invalid && clientForm.get('prenom')?.touched">
+      <small *ngIf="clientForm.get('prenom')?.hasError('required')">Prénom est requis.</small>
+      <small *ngIf="clientForm.get('prenom')?.hasError('pattern')">Prénom ne peut contenir que des lettres.</small>
+    </div>
+  </div>
+
+  <!-- Champ Téléphone -->
+  <div>
+    <label for="telephone">Téléphone</label>
+    <input id="telephone" formControlName="telephone" type="text" placeholder="Entrez votre téléphone">
+    <div *ngIf="clientForm.get('telephone')?.invalid && clientForm.get('telephone')?.touched">
+      <small *ngIf="clientForm.get('telephone')?.hasError('required')">Téléphone est requis.</small>
+      <small *ngIf="clientForm.get('telephone')?.hasError('pattern')">Téléphone doit contenir exactement 8 chiffres.</small>
+    </div>
+  </div>
+
+  <!-- Champ Email -->
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email" placeholder="Entrez votre email">
+    <div *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched">
+      <small *ngIf="clientForm.get('email')?.hasError('required')">Email est requis.</small>
+      <small *ngIf="clientForm.get('email')?.hasError('email')">Email doit être valide.</small>
+    </div>
+  </div>
+
+  <!-- Champ Mot de passe -->
+  <div>
+    <label for="password">Mot de passe</label>
+    <input id="password" formControlName="password" type="password" placeholder="Entrez votre mot de passe">
+    <div *ngIf="clientForm.get('password')?.invalid && clientForm.get('password')?.touched">
+      <small *ngIf="clientForm.get('password')?.hasError('required')">Mot de passe est requis.</small>
+      <small *ngIf="clientForm.get('password')?.hasError('minlength')">Mot de passe doit contenir au moins 6 caractères.</small>
+    </div>
+  </div>
+
+  <!-- Boutons -->
+  <button type="submit" [disabled]="clientForm.invalid">S'inscrire</button>
+  <button type="button" [routerLink]="'/client-connexion'" style="margin-top: 1rem;">Connexion</button>
+</form>

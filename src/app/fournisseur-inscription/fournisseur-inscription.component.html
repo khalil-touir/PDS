@@ -1,0 +1,50 @@
+<h1 style="text-align: center;">Formulaire D'incription Fournisseur</h1>
+<form [formGroup]="fournisseurForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nom">Nom</label>
+      <input id="nom" formControlName="nom" type="text" placeholder="Entrez votre nom" />
+      <div *ngIf="fournisseurForm.get('nom')?.invalid && fournisseurForm.get('nom')?.touched">
+        <small *ngIf="fournisseurForm.get('nom')?.hasError('required')">Le nom est requis.</small>
+        <small *ngIf="fournisseurForm.get('nom')?.hasError('pattern')">Le nom ne doit contenir que des lettres.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="prenom">Prénom</label>
+      <input id="prenom" formControlName="prenom" type="text" placeholder="Entrez votre prénom" />
+      <div *ngIf="fournisseurForm.get('prenom')?.invalid && fournisseurForm.get('prenom')?.touched">
+        <small *ngIf="fournisseurForm.get('prenom')?.hasError('required')">Le prénom est requis.</small>
+        <small *ngIf="fournisseurForm.get('prenom')?.hasError('pattern')">Le prénom ne doit contenir que des lettres.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="adresse">Adresse</label>
+      <input id="adresse" formControlName="adresse" type="text" placeholder="Entrez votre adresse" />
+      <div *ngIf="fournisseurForm.get('adresse')?.invalid && fournisseurForm.get('adresse')?.touched">
+        <small *ngIf="fournisseurForm.get('adresse')?.hasError('required')">L'adresse est requise.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Entrez votre email" />
+      <div *ngIf="fournisseurForm.get('email')?.invalid && fournisseurForm.get('email')?.touched">
+        <small *ngIf="fournisseurForm.get('email')?.hasError('required')">L'email est requis.</small>
+        <small *ngIf="fournisseurForm.get('email')?.hasError('email')">Veuillez entrer un email valide.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="motDePasse">Mot de passe</label>
+      <input id="motDePasse" formControlName="motDePasse" type="password" placeholder="Entrez votre mot de passe" />
+      <div *ngIf="fournisseurForm.get('motDePasse')?.invalid && fournisseurForm.get('motDePasse')?.touched">
+        <small *ngIf="fournisseurForm.get('motDePasse')?.hasError('required')">Le mot de passe est requis.</small>
+        <small *ngIf="fournisseurForm.get('motDePasse')?.hasError('minLength')">Le mot de passe doit contenir au moins 6 caractères.</small>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="fournisseurForm.invalid">S'inscrire</button>
+    <button type="button" [routerLink]="'/fournisseur-connexion'" style="margin-top: 1rem;">Connexion</button>
+  </form>
+  
